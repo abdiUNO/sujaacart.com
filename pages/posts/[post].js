@@ -105,7 +105,10 @@ const Post = ({ post }) => {
           </div>
         </motion.div>
 
-        <motion.img variants={imageVariants} src={`/comic_0${post.id}.jpg`} />
+        <motion.img
+          variants={imageVariants}
+          src={`/img/comic_0${post.id}.jpg`}
+        />
 
         <motion.div variants={textVariants}>
           <PostInfo post={post} />
