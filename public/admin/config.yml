@@ -1,5 +1,5 @@
 backend:
-  name: git-gateway
+  name: test-repo
   branch: master
 media_folder: public/img
 public_folder: img
@@ -10,9 +10,10 @@ collections:
     create: true
     slug: '{{year}}-{{month}}-{{day}}_{{slug}}'
     fields:
-      - { label: 'Title', name: 'title', widget: 'string', required: true }
+      - { label: 'Title', name: 'title', widget: 'string', required: false }
       - {
           label: 'Publish Date',
+          hidden: true,
           name: 'date',
           widget: 'datetime',
           required: true,

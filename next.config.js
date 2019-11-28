@@ -31,7 +31,7 @@ module.exports = withCSS({
     });
     return configuration;
   },
-  async exportPathMap(defaultPathMap) {
+  exportPathMap: async function(defaultPathMap) {
     return {
       ...defaultPathMap,
       ...getPathsForPosts()
