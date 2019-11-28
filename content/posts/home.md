@@ -1,5 +1,5 @@
 ---
 title: Hello
 slug: home
+image: /img/comic_01.jpg
 ---
-<h1>Hello world!</h1>

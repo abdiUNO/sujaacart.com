@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Head from 'next/head';
+import matter from 'gray-matter';
 
 let easing = [0.175, 0.85, 0.42, 0.96];
 
@@ -73,7 +74,7 @@ const PostInfo = ({ post }) => {
   );
 };
 
-const Post = ({ post }) => {
+export default function Post({ post }) {
   const ref = useRef(null);
 
   return (
@@ -86,29 +87,22 @@ const Post = ({ post }) => {
         <motion.div variants={textVariants}>
           <div className="row nav-controls">
             {post.id > 1 ? (
-              <Link href="/posts/[post]" as={`/posts/${post.id - 1}`} passHref>
-                <a>
-                  <span className="meta-nav mr-3">←</span>
-                  Previous
-                </a>
-              </Link>
+              <a>
+                <span className="meta-nav mr-3">←</span>
+                Previous
+              </a>
             ) : (
               <div />
             )}
 
-            <Link href="/posts/[post]" as={`/posts/${post.id + 1}`}>
-              <a>
-                Next
-                <span className="meta-nav ml-3">→</span>
-              </a>
-            </Link>
+            <a>
+              Next
+              <span className="meta-nav ml-3">→</span>
+            </a>
           </div>
         </motion.div>
 
-        <motion.img
-          variants={imageVariants}
-          src={`/img/comic_0${post.id}.jpg`}
-        />
+        <motion.img variants={imageVariants} src={`${post.image}`} />
 
         <motion.div variants={textVariants}>
           <PostInfo post={post} />
@@ -152,19 +146,18 @@ const Post = ({ post }) => {
       `}</style>
     </div>
   );
-};
+}
 
-Post.getInitialProps = ({ query }) => {
+Post.getInitialProps = async function({ query }) {
   console.log(query);
-  const post = {
-    id: parseInt(query.post),
-    date: 'November 19th, 2019',
-    title: 'Test title'
+
+  const { slug } = query;
+  const value = await import(`../../content/posts/${slug}.md`);
+  return {
+    post: {
+      id: slug,
+      image: value.attributes.image,
+      title: value.attributes.title
+    }
   };
-
-  console.log(`Fetched show: ${post}`);
-
-  return { post };
 };
-
-export default Post;

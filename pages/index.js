@@ -39,10 +39,10 @@ const importBlogPosts = async () => {
       const value = values[index];
       // Parse yaml metadata & markdownbody in document
       console.log(value, key, index, slug);
-      return { ...value.attributes };
       return {
         id: value.attributes.slug,
-        url: `/img/comic_0${value.attributes.slug}.jpg`
+        image: value.attributes.image,
+        title: value.attributes.title
       };
       // const document = matter(value.default);
       // return {
