@@ -9,5 +9,56 @@
   <body>
     <!-- Include the script that builds the page and powers Netlify CMS -->
     <script src="https://unpkg.com/netlify-cms@2.9.7/dist/netlify-cms.js"></script>
+
+    <script>
+      CMS.registerWidget(
+              'uuid',
+              createClass({
+                getDefaultProps: function() {
+                  return {
+                    value: ''
+                  }
+                },
+                uuid: function(options) {
+                  options = options || {};
+                  var size = options.size || 21;
+                  var url = options.url || "Uint8ArdomValuesObj012345679BCDEFGHIJKLMNPQRSTWXYZ_cfghkpqvwxyz-";
+                  var id = "";
+
+                  if (typeof self === "undefined" || (!self.crypto && !self.msCrypto)) {
+                    while (0 < size--) {
+                      id += url[(Math.random() * 64) | 0];
+                    }
+                    return id;
+                  }
+
+                  // else
+                  var crypto = self.crypto || self.msCrypto;
+                  var bytes = crypto.getRandomValues(new Uint8Array(size));
+                  while (0 < size--) {
+                    id += url[bytes[size] & 63];
+                  }
+                  return id;
+                },
+                componentDidMount: function() {
+                  var value = this.props.value;
+                  var onChange = this.props.onChange;
+                  var uuid = this.uuid;
+
+                  if (!value) {
+                    onChange(uuid());
+                  }
+                },
+                render: function() {
+                  var value = this.props.value;
+                  var classNameWrapper = this.props.classNameWrapper;
+                  var forID = this.props.forID;
+
+                  return h('span', { id: forID, className: classNameWrapper, style:{display:'hidden'} }, value);
+                }
+              })
+      );
+    </script>
+
   </body>
 </html>

@@ -9,8 +9,9 @@ collections:
     folder: 'content/posts'
     create: true
     slug: '{{year}}-{{month}}-{{day}}_{{slug}}'
+    identifier_field: id
     fields:
-      - { label: 'Title', name: 'title', widget: 'string', required: false }
+      - { name: id, widget: hidden, default: "{{uuid}}" }
       - {
           label: 'Publish Date',
           hidden: true,
