@@ -1,56 +1,68 @@
-import React from 'react'
-import Link from 'next/link'
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faShare, faBars } from '@fortawesome/free-solid-svg-icons';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 
-const links = [
-  { href: 'https://zeit.co/now', label: 'ZEIT' },
-  { href: 'https://github.com/zeit/next.js', label: 'GitHub' },
-].map(link => {
-  link.key = `nav-link-${link.href}-${link.label}`
-  return link
-})
+import './nav.css';
+import Link from 'next/link';
 
-const Nav = () => (
-  <nav>
-    <ul>
-      <li>
-        <Link href="/">
-          <a>Home</a>
-        </Link>
-      </li>
-      {links.map(({ key, href, label }) => (
-        <li key={key}>
-          <a href={href}>{label}</a>
-        </li>
-      ))}
-    </ul>
+const Wrapper = () => (
+  <div className="wrapper">
+    <Navbar collapseOnSelect className="navbar-default" expand="md">
+      <div className="nav_container">
+        <div className="menu_mobile">
+          <Link href={'/'}>
+            <Navbar.Brand className="header" href="#home">
+              <h1 className="header_title  text-decoration-none">
+                SUJAAC ARTS
+              </h1>
+            </Navbar.Brand>
+          </Link>
 
-    <style jsx>{`
-      :global(body) {
-        margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, Avenir Next, Avenir,
-          Helvetica, sans-serif;
-      }
-      nav {
-        text-align: center;
-      }
-      ul {
-        display: flex;
-        justify-content: space-between;
-      }
-      nav > ul {
-        padding: 4px 16px;
-      }
-      li {
-        display: flex;
-        padding: 6px 8px;
-      }
-      a {
-        color: #067df7;
-        text-decoration: none;
-        font-size: 13px;
-      }
-    `}</style>
-  </nav>
-)
+          <Navbar.Toggle variant="light" aria-controls="basic-navbar-nav">
+            <div className="nav-icon">
+              <div></div>
+            </div>
+          </Navbar.Toggle>
+        </div>
+        <Navbar.Collapse id="basic-navbar-nav">
+          <div className="menu_container">
+            <Nav className="menu">
+              <Link href="/">
+                <Nav.Link href="#home">Comic</Nav.Link>
+              </Link>
+              <Link href={'/about'}>
+                <Nav.Link href="#link">About</Nav.Link>
+              </Link>
+              <Link href={'/contact'}>
+                <Nav.Link href="#link">Contact</Nav.Link>
+              </Link>
+            </Nav>
 
-export default Nav
+            <Nav className="social">
+              <Nav.Link
+                href="https://www.facebook.com/pages/category/Personal-Blog/Sujaac-Arts-119424006122869/"
+                target="_blank"
+                className="text-decoration-none text-white">
+                <FontAwesomeIcon icon={faFacebook} />
+              </Nav.Link>
+              <Nav.Link
+                href="https://www.facebook.com/pages/category/Personal-Blog/Sujaac-Arts-119424006122869/"
+                target="_blank"
+                className="text-decoration-none text-white">
+                <FontAwesomeIcon icon={faTwitter} />
+              </Nav.Link>
+              <Nav.Link href="facebook.com">
+                <FontAwesomeIcon icon={faShare} />
+              </Nav.Link>
+            </Nav>
+          </div>
+        </Navbar.Collapse>
+      </div>
+    </Navbar>
+  </div>
+);
+
+export default Wrapper;
