@@ -157,7 +157,7 @@ Post.getInitialProps = async function({ query }) {
     post: {
       id: slug,
       image: value.attributes.image,
-      title: value.attributes.title
+      title: value.attributes.id
     }
   };
 };
