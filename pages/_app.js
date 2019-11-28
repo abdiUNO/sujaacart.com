@@ -2,7 +2,7 @@ import React from 'react';
 import App from 'next/app';
 import { AnimatePresence } from 'framer-motion';
 import Router from 'next/router';
-import Layout from '../components/layout';
+import Layout from '../components/Layout';
 
 class MyApp extends App {
   render() {
