@@ -6,15 +6,8 @@ import Layout from '../components/Layout';
 import Head from 'next/head';
 import { TypographyStyle } from 'react-typography';
 import typography from '../utils/typography';
-import { trackPageView } from '../helpers';
 
 class MyApp extends App {
-  // componentDidMount() {
-  //   Router.onRouteChangeComplete = url => {
-  //     trackPageView(url);
-  //   };
-  // }
-
   render() {
     const { Component, pageProps, router } = this.props;
     return (

@@ -9,15 +9,6 @@ class About extends Component {
       <motion.div initial="visible" animate={'enter'} exit="exit">
         <Head>
           <title>Home</title>
-          <link rel="icon" href="/favicon.ico" />
-          <meta property="og:url" content="https://sujaacart.com/" />
-          <meta property="og:type" content="website" />
-          <meta property="og:title" content="Sujaac Art" />
-          <meta property="og:description" content="Web Comics" />
-          <meta
-            property="og:image"
-            content="https://sujaacart.com/img/website_preview.png"
-          />
         </Head>
         <div className="container">
           <div className="img-container">

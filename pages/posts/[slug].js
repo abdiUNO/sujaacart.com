@@ -92,15 +92,6 @@ export default function Post(props) {
     <div className="container post" style={{ height: '100vh' }}>
       <Head>
         <title>{`Post | ${reformatDate(post.date)}`}</title>
-        <link rel="icon" href="/favicon.ico" />
-        <meta property="og:url" content="https://sujaacart.com/" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Sujaac Art" />
-        <meta property="og:description" content="Web Comics" />
-        <meta
-          property="og:image"
-          content="https://sujaacart.com/img/website_preview.png"
-        />
       </Head>
       <motion.div
         initial="exit"
@@ -112,7 +103,6 @@ export default function Post(props) {
             {props.post.prev ? (
               <Link
                 passHref={true}
-                shallow={true}
                 href={{ pathname: `/posts/${props.post.prev}` }}>
                 <a>
                   <span className="meta-nav mr-3">←</span>
