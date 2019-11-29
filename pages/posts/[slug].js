@@ -86,12 +86,10 @@ const spring = {
 };
 
 export default function Post(props) {
-  const myRef = useRef(null);
-
   const { post } = props;
-  console.log(props);
+
   return (
-    <div className="container post" style={{ height: '100vh' }} ref={myRef}>
+    <div className="container post" style={{ height: '100vh' }}>
       <Head>
         <title>{`Post | ${reformatDate(post.date)}`}</title>
         <link rel="icon" href="/favicon.ico" />
@@ -105,19 +103,17 @@ export default function Post(props) {
         />
       </Head>
       <motion.div
-        initial={post.pagination ? 'enter' : 'exit'}
+        initial="exit"
         animate="enter"
-        layoutTransition={spring}
-        exit="exit"
-        transition={spring}>
-        <motion.div variants={textVariants} layoutTransition={spring}>
-          <div className="row nav-controls container mx-auto">
+        positionTransition={spring}
+        exit="exit">
+        <motion.div variants={textVariants}>
+          <div className="row nav-controls">
             {props.post.prev ? (
               <Link
-                href={{
-                  pathname: `/posts/${props.post.prev}`,
-                  query: { uuid: props.post.prev, pagination: true }
-                }}>
+                passHref={true}
+                shallow={true}
+                href={{ pathname: `/posts/${props.post.prev}` }}>
                 <a>
                   <span className="meta-nav mr-3">←</span>
                   Previous
@@ -129,10 +125,9 @@ export default function Post(props) {
 
             {props.post.next ? (
               <Link
-                href={{
-                  pathname: `/posts/${props.post.next}`,
-                  query: { uuid: props.post.next, pagination: true }
-                }}>
+                passHref={true}
+                shallow={true}
+                href={{ pathname: `/posts/${props.post.next}` }}>
                 <a>
                   Next
                   <span className="meta-nav ml-3">→</span>
@@ -192,7 +187,7 @@ export default function Post(props) {
 }
 
 Post.getInitialProps = async function(ctx) {
-  const { uuid, next, prev, pagination } = ctx.query;
+  const { uuid, next, prev } = ctx.query;
   const value = await import(`../../content/posts/${uuid}.md`);
   return {
     post: {
@@ -201,8 +196,7 @@ Post.getInitialProps = async function(ctx) {
       next,
       prev,
       date: value.attributes.date,
-      text: value.attributes.text,
-      pagination
+      text: value.attributes.text
     }
   };
 };

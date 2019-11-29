@@ -104,7 +104,7 @@ class MyApp extends App {
   }
 }
 
-initRouterListeners();
+//initRouterListeners();
 
 function initRouterListeners() {
   console.log('Init router listeners');
