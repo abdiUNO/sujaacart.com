@@ -2,12 +2,11 @@
 
 .wrapper {
   background-color: #3498db;
-  padding-top: 15px;
 }
 
 .navbar {
   font-family: 'Montserrat', sans-serif;
-  padding-top: 3em;
+  padding-top: 2.75em;
   padding-bottom: 1.5em;
   border: none;
 }
@@ -33,7 +32,7 @@
 }
 
 .navbar-default .navbar-collapse .social a {
-  font-size: 20px;
+  font-size: 23px;
 }
 
 .nav_container {
@@ -51,8 +50,8 @@
 }
 
 .header_title {
-  font-family: 'Patrick Hand', cursive;
-  font-weight: 700 !important;
+  font-family: 'Gloria Hallelujah', cursive;
+  font-weight: 600 !important;
   font-size: 3.4em !important;
   line-height: 1.3em;
   letter-spacing: 3px !important;
@@ -62,7 +61,6 @@
 .navbar-default .navbar-brand,
 .navbar-default .navbar-nav .nav-link {
   text-transform: full-width;
-  font-weight: 600;
   text-align: center;
   color: white;
   padding: 8px 24px;
@@ -85,7 +83,7 @@
   position: relative;
   text-decoration: none;
   text-transform: full-width;
-  transition: 0.25s;
+  transition: 0.25s none;
 }
 
 .navbar-default .menu .nav-link:before {
@@ -107,6 +105,7 @@
 
 .navbar-default .navbar-nav .active {
   font-weight: 600;
+  color: #ffffff !important;
 }
 
 .navbar-default .navbar-nav .nav-link::after {
@@ -128,6 +127,96 @@
 .navbar-default .navbar-nav .nav-link:hover::after {
   transform: scaleX(1);
   transform-origin: bottom;
+}
+
+@media (min-width: 768px) {
+  .headroom-wrapper {
+    height: 375px !important;
+  }
+
+  .headroom--scrolled .wrapper {
+    background-color: #3498db;
+    padding-top: 0px;
+  }
+
+  .headroom--scrolled .navbar {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  .headroom--scrolled .header {
+    margin: 0px;
+    text-align: left;
+    align-items: normal;
+    justify-content: normal;
+  }
+
+  .headroom--scrolled .navbar-default .navbar-brand,
+  .headroom--scrolled .navbar-default .navbar-nav .nav-link {
+    text-align: left;
+    padding: 8px 24px 8px;
+  }
+
+  .headroom--scrolled .navbar-default .navbar-brand {
+    padding: 8px 24px 8px 0px;
+  }
+
+  .headroom--scrolled .navbar .navbar-toggler {
+    border-color: transparent !important;
+    padding: 4px 8px !important;
+    outline-style: none;
+  }
+
+  .headroom--scrolled .navbar .navbar-toggler .navbar-toggler-icon {
+    color: #ffffff !important;
+    background: RGBA(1, 1, 1, 1) !important;
+  }
+
+  .headroom--scrolled .header_title {
+    font-size: 1.7em !important;
+    line-height: 1.3em;
+    letter-spacing: 3px !important;
+    text-align: left;
+    color: white;
+    align-items: normal;
+    justify-content: normal;
+    margin-bottom: 0px;
+  }
+
+  .headroom--scrolled .navbar-default .navbar-collapse .social,
+  .headroom--scrolled .navbar-default .navbar-collapse .menu {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  .headroom--scrolled .navbar-default .navbar-collapse .menu_container {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .headroom--scrolled .navbar-default .navbar-collapse .navbar-nav {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .headroom--scrolled .menu_mobile {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+  }
+
+  .headroom--scrolled .nav_container {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+  }
 }
 
 @media (max-width: 767px) {
@@ -178,7 +267,6 @@
     color: white;
     align-items: normal;
     justify-content: normal;
-    margin-bottom: 0px;
   }
 
   .navbar-default .navbar-collapse .menu_container {

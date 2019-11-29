@@ -50,10 +50,14 @@ module.exports = withCSS({
     );
 
     //add each blog to the routes obj
-    blogSlugs.forEach(blog => {
+    blogSlugs.map((blog, index) => {
       routes[`/posts/${blog}`] = {
         page: '/posts/[slug]',
-        query: { slug: blog }
+        query: {
+          uuid: blog,
+          next: blogSlugs[index + 1],
+          prev: blogSlugs[index - 1]
+        }
       };
     });
 

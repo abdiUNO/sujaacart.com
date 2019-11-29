@@ -15,6 +15,8 @@ const PostList = ({ children }) => (
     <div className="content-wrapper">{children}</div>
 
     <style jsx global>{`
+      @import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Open+Sans:400,700&display=swap');
+
       *,
       *::before,
       *::after {
@@ -24,12 +26,13 @@ const PostList = ({ children }) => (
       :global(body) {
         margin: 0;
         font-size: 20px;
+        height: 100%;
+        width: 100%;
         line-height: 1.7;
         font-weight: 400;
         background: #fff;
-        font-family: Montserrat -apple-system, BlinkMacSystemFont, Roboto,
-          'Segoe UI', 'Fira Sans', Avenir, 'Helvetica Neue', 'Lucida Grande',
-          sans-serif;
+        font-family: 'Open Sans' -apple-system, BlinkMacSystemFont, 'Segoe UI',
+          'Fira Sans', Avenir, 'Helvetica Neue', 'Lucida Grande', sans-serif;
         text-rendering: optimizeLegibility;
       }
 
@@ -59,6 +62,7 @@ const PostList = ({ children }) => (
       }
 
       .content-wrapper {
+        margin-top: 25px;
         padding: 40px 0;
         background-color: #ffffff;
       }

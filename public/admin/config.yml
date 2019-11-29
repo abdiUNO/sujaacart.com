@@ -25,3 +25,4 @@ collections:
           widget: 'image',
           required: true,
         }
+      - { label: 'Text', name: 'text', widget: 'text' }
