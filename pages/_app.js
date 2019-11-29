@@ -9,11 +9,11 @@ import typography from '../utils/typography';
 import { trackPageView } from '../helpers';
 
 class MyApp extends App {
-  componentDidMount() {
-    Router.onRouteChangeComplete = url => {
-      trackPageView(url);
-    };
-  }
+  // componentDidMount() {
+  //   Router.onRouteChangeComplete = url => {
+  //     trackPageView(url);
+  //   };
+  // }
 
   render() {
     const { Component, pageProps, router } = this.props;

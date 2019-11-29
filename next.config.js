@@ -6,32 +6,13 @@ const posts = './content/posts';
 
 const withCSS = require('@zeit/next-css');
 
-const getPathsForPosts = () => {
-  return fs
-    .readdirSync(posts)
-    .map(blogName => {
-      const trimmedName = blogName.substring(0, blogName.length - 3);
-      return {
-        [`/posts/${trimmedName}`]: {
-          page: '/posts/[slug]',
-          query: {
-            slug: trimmedName
-          }
-        }
-      };
-    })
-    .reduce((acc, curr) => {
-      return { ...acc, ...curr };
-    }, {});
-};
-
 module.exports = withCSS({
-  webpack: configuration => {
-    configuration.module.rules.push({
+  webpack: function(config) {
+    config.module.rules.push({
       test: /\.md$/,
-      use: 'frontmatter-markdown-loader'
+      use: 'raw-loader'
     });
-    return configuration;
+    return config;
   },
   exportPathMap: async function() {
     const routes = {
@@ -54,7 +35,7 @@ module.exports = withCSS({
       routes[`/posts/${blog}`] = {
         page: '/posts/[slug]',
         query: {
-          uuid: blog,
+          slug: blog,
           next: blogSlugs[index + 1],
           prev: blogSlugs[index - 1]
         }

@@ -187,16 +187,15 @@ export default function Post(props) {
 }
 
 Post.getInitialProps = async function(ctx) {
-  const { uuid, next, prev } = ctx.query;
-  const value = await import(`../../content/posts/${uuid}.md`);
+  const { slug, next, prev } = ctx.query;
+  const value = await import(`../../content/posts/${slug}.md`);
+  const { data } = matter(value.default);
   return {
     post: {
-      id: uuid,
-      image: value.attributes.image,
+      ...data,
+      id: data.uuid,
       next,
-      prev,
-      date: value.attributes.date,
-      text: value.attributes.text
+      prev
     }
   };
 };

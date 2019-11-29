@@ -50,11 +50,11 @@ function PostList({ posts }) {
           <div className="gallery" id="gallery">
             {posts.map((_comic, index) => (
               <div
-                key={_comic.id}
-                id={_comic.id}
+                key={_comic.slug}
+                id={_comic.slug}
                 className="mb-3 pics animation all 2 mx-3 py-2">
                 <motion.div variants={postVariants}>
-                  <Link passHref={true} href={`/posts/${_comic.id}`}>
+                  <Link passHref={true} href={`/posts/${_comic.slug}`}>
                     <a className="text-decoration-none">
                       <motion.div
                         whileHover="hover"
@@ -63,7 +63,7 @@ function PostList({ posts }) {
                         }}>
                         <img
                           className="img-fluid"
-                          src={_comic.image}
+                          src={`${_comic.image}?nf_resize=fit&w=400`}
                           alt="Card image cap"
                         />
                       </motion.div>
