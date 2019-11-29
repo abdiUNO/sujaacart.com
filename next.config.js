@@ -1,9 +1,5 @@
 // next.config.js
 const glob = require('glob');
-
-const fs = require('fs');
-const posts = './content/posts';
-
 const withCSS = require('@zeit/next-css');
 
 module.exports = withCSS({
