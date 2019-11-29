@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Head from 'next/head';
-import Index from './index';
 import { motion } from 'framer-motion';
 
 class About extends Component {
