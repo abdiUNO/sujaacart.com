@@ -62,7 +62,7 @@ function PostList({ posts }) {
                 className="img-fluid"
                 src={`${_comic.image}?nf_resize=fit&w=400`}
                 alt={`Post ${_comic.date}`}
-                loading="lazy"
+                loading="auto"
               />
             </motion.div>
             <p className="img-date">November 19th, 2019</p>
@@ -82,6 +82,7 @@ function PostList({ posts }) {
                 src="/img/profile.png?nf_resize=fit&w=400"
                 alt=""
                 className="img-fluid"
+                loading="auto"
               />
             </div>
           </div>
@@ -89,7 +90,7 @@ function PostList({ posts }) {
         <Masonry
           className={'gallery'} // default ''
           options={masonryOptions} // default {}
-        >
+          enableResizableChildren={true}>
           {childElements}
         </Masonry>
       </motion.div>

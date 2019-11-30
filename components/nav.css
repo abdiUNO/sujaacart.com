@@ -1,11 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Patrick+Hand&display=swap');
-
 .wrapper {
   background-color: #3498db;
 }
 
 .navbar {
-  font-family: 'Montserrat', sans-serif;
+  font-family: Montserrat -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'Fira Sans', Avenir, 'Helvetica Neue', 'Lucida Grande', sans-serif;
   padding-top: 2.75em;
   padding-bottom: 1.5em;
   border: none;
@@ -130,10 +129,6 @@
 }
 
 @media (min-width: 768px) {
-  .headroom-wrapper {
-    height: 350px !important;
-  }
-
   .headroom--scrolled .wrapper {
     background-color: #3498db;
     padding-top: 0px;

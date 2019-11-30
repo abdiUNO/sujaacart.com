@@ -34,9 +34,10 @@ const Index = props => {
       <Head>
         <title>Sujaac Arts</title>
 
-        <meta name="title" content="Sujaac Arts" />
+        <meta name="title" content="Sujaac Arts" key="title" />
         <meta
           property="description"
+          key="description"
           content="Sujaac Arts is Somalia political cartoonist, browse and share posts by sujaac arts"
         />
       </Head>

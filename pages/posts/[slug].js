@@ -145,6 +145,7 @@ export default function Post(props) {
           variants={imageVariants}
           src={`${post.image}`}
           alt={`Post ${post.date}`}
+          loading="auto"
         />
 
         <motion.div variants={textVariants}>

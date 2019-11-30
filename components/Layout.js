@@ -1,12 +1,6 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 import React from 'react';
 
 import Nav from './nav';
-
-import { config } from '@fortawesome/fontawesome-svg-core';
-import '@fortawesome/fontawesome-svg-core/styles.css'; // Import the CSS
-config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS automatically since it's being imported above
 
 const PostList = ({ children }) => (
   <div className="page-wrapper">
@@ -15,8 +9,6 @@ const PostList = ({ children }) => (
     <div className="content-wrapper">{children}</div>
 
     <style jsx global>{`
-      @import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Open+Sans:400,700&display=swap');
-
       *,
       *::before,
       *::after {
@@ -31,7 +23,7 @@ const PostList = ({ children }) => (
         line-height: 1.7;
         font-weight: 400;
         background: #fff;
-        font-family: 'Open Sans' -apple-system, BlinkMacSystemFont, 'Segoe UI',
+        font-family: Montserrat -apple-system, BlinkMacSystemFont, 'Segoe UI',
           'Fira Sans', Avenir, 'Helvetica Neue', 'Lucida Grande', sans-serif;
         text-rendering: optimizeLegibility;
       }
