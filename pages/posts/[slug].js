@@ -176,7 +176,6 @@ export default function Post(props) {
 }
 
 Post.getInitialProps = async function(ctx) {
-  console.log(ctx);
   const { slug, next, prev } = ctx.query;
   const value = await import(`../../content/posts/${slug}.md`);
   return {

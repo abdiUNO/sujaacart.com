@@ -36,8 +36,6 @@ module.exports = withCSS({
       };
     });
 
-    console.log(routes);
-
     return routes;
   }
 });
