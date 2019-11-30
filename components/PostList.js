@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Masonry from 'react-masonry-component';
 
 const masonryOptions = {
+  transitionDuration: 0,
   horizontalOrder: true,
   itemSelector: '.pics'
 };
