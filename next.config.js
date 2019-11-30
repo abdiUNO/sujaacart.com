@@ -10,13 +10,13 @@ module.exports = withPlugins(
     [
       optimizedImages,
       {
-        handleImages: ['jpeg', 'jpg', 'png', 'webp'],
+        handleImages: ['jpeg', 'jpg', 'png', 'webp', 'gif'],
         optimizeImages: true,
         imagesFolder: 'img',
         optimizeImagesInDev: true,
-        responsiveLoader: {
-          adapter: require('responsive-loader/sharp')
-        }
+        mozjpeg: {},
+        optipng: {},
+        webp: {}
       }
     ]
   ],
