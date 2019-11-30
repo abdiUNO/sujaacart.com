@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const matter = require('gray-matter');
 
 const blacklist = ['_app', 'posts/[slug]'];
 
@@ -43,6 +44,23 @@ getPathsObject = (_dir, keepExt) => {
   return fileObj;
 };
 
+const parseMarkdown = () => {
+  const fileObj = {};
+
+  const files = fs.readdirSync('content/posts/');
+  files.forEach(file => {
+    const { data } = matter.read(`content/posts/${file}`);
+    fileObj[`/posts/${file.substr(0, file.lastIndexOf('.'))}`] = {
+      ...data,
+      page: `/posts/${file}`,
+      lastModified: data.date,
+      extension: path.extname(file)
+    };
+  });
+
+  return fileObj;
+};
+
 function formatDate(date) {
   var d = new Date(date),
     month = '' + (d.getMonth() + 1),
@@ -55,16 +73,21 @@ function formatDate(date) {
   return [year, month, day].join('-');
 }
 
+function reformatDate(fullDate) {
+  const date = new Date(fullDate);
+  return date.toDateString().slice(4);
+}
+
 const pathsObj = getPathsObject('pages/');
-const imageObj = getPathsObject('public/img/', true);
+const imageObj = parseMarkdown();
 
 const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"> 
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${Object.keys(pathsObj)
   .map(
     path =>
-      ` 
+      `
     <url>
       <loc>https://sujaacart.com${path}</loc>
       <lastmod>${formatDate(new Date(pathsObj[path].lastModified))}</lastmod>
@@ -74,13 +97,18 @@ ${Object.keys(pathsObj)
 ${Object.keys(imageObj)
   .map(
     path => `
-    <image:image>
-        <image:loc>https://sujaacart.com${path}${imageObj[path].extension}</image:loc>
-        <image:title>Art by Sujaac Art | ${imageObj[path].file}</image:title>
-    </image:image>
+    <url>
+      <loc>https://sujaacart.com${path}</loc>
+      <image:image>
+          <image:loc>https://sujaacart.com${imageObj[path].image}</image:loc>
+          <image:title>Art by Sujaac Art | posted on ${reformatDate(
+            imageObj[path].date
+          )}</image:title>
+      </image:image>
+    </url>
 `
   )
-  .join('')}  
+  .join('')}
 </urlset>`;
 
 fs.writeFileSync('out/sitemap.xml', sitemapXml);
