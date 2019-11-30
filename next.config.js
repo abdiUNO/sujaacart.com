@@ -10,7 +10,7 @@ module.exports = withPlugins(
     [
       optimizedImages,
       {
-        handleImages: ['jpeg', 'png', 'webp'],
+        handleImages: ['jpeg', 'jpg', 'png', 'webp'],
         optimizeImages: true,
         imagesFolder: 'img',
         optimizeImagesInDev: true,
