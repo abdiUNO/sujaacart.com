@@ -43,11 +43,11 @@ function PostList({ posts }) {
             <a className="text-decoration-none">
               <picture>
                 <source
-                  srcSet={require(`../static/img${_comic.image}?webp&resize&sizes[]=300&sizes[]=500`)}
+                  srcSet={require(`../static${_comic.image}?webp&resize&sizes[]=300&sizes[]=500`)}
                   type="image/webp"
                 />
                 <source
-                  srcSet={require(`../static/img${_comic.image}?resize&sizes[]=300&sizes[]=500`)}
+                  srcSet={require(`../static${_comic.image}?resize&sizes[]=300&sizes[]=500`)}
                 />
 
                 <img
