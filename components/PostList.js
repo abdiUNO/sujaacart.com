@@ -26,48 +26,44 @@ const postVariants = {
   }
 };
 
-const Gallery = ({ posts }) => (
-  <div>
-    {posts.map((_comic, index) => (
-      <div
-        key={_comic.id}
-        id={index}
-        className="mb-3 pics animation col-md-4 col-sm-6 col-xs-12">
-        <motion.div variants={postVariants}>
-          <Link prefetch={false} href={`/posts/${_comic.id}`}>
-            <a className="text-decoration-none">
-              <motion.div
-                whileHover="hover"
-                variants={{
-                  hover: { scale: 0.96, bounceDamping: 8 }
-                }}>
-                <picture>
-                  <source
-                    media="(max-width: 640px)"
-                    srcSet={`${_comic.image}?nf_resize=fit&w=300`}
-                  />
-                  <source
-                    media="(min-width: 641px)"
-                    srcSet={`${_comic.image}?nf_resize=fit&w=400`}
-                  />
-                  <img
-                    className="img-fluid"
-                    src={`${_comic.image}?nf_resize=fit&w=400`}
-                    alt={`Post ${_comic.date}`}
-                    loading="auto"
-                  />
-                </picture>
-                <p className="img-date">November 19th, 2019</p>
-              </motion.div>
-            </a>
-          </Link>
-        </motion.div>
-      </div>
-    ))}
-  </div>
-);
+function PostList({ posts }) {
+  const childElements = posts.map((_comic, index) => (
+    <div
+      key={_comic.id}
+      id={index}
+      className="mb-3 pics animation col-md-4 col-sm-6 col-xs-12">
+      <motion.div variants={postVariants}>
+        <Link href={`/posts/${_comic.id}`}>
+          <a className="text-decoration-none">
+            <motion.div
+              whileHover="hover"
+              variants={{
+                hover: { scale: 0.96, bounceDamping: 8 }
+              }}>
+              <picture>
+                <source
+                  media="(max-width: 640px)"
+                  srcSet={`${_comic.image}?nf_resize=fit&w=275`}
+                />
+                <source
+                  media="(min-width: 641px)"
+                  srcSet={`${_comic.image}?nf_resize=fit&w=375`}
+                />
+                <img
+                  className="img-fluid"
+                  src={`${_comic.image}?nf_resize=fit&w=375`}
+                  alt={`Post ${_comic.date}`}
+                  loading="auto"
+                />
+              </picture>
+              <p className="img-date">November 19th, 2019</p>
+            </motion.div>
+          </a>
+        </Link>
+      </motion.div>
+    </div>
+  ));
 
-function PostList({ posts, scrollPosition }) {
   return (
     <div style={{ height: '100%' }}>
       <motion.div initial="initial" animate="enter" exit="exit">
@@ -75,7 +71,7 @@ function PostList({ posts, scrollPosition }) {
           <div className="row embed-responsive">
             <div className="img-container mx-auto">
               <img
-                src="/img/profile.png?nf_resize=fit&w=400"
+                src="/img/profile.png?nf_resize=fit&w=375"
                 alt=""
                 className="img-fluid"
                 loading="auto"
@@ -86,8 +82,8 @@ function PostList({ posts, scrollPosition }) {
         <Masonry
           className={'gallery'} // default ''
           options={masonryOptions} // default {}
-          enableResizableChildren={true}>
-          <Gallery posts={posts} />
+        >
+          {childElements}
         </Masonry>
       </motion.div>
       <style jsx>{`
