@@ -6,8 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "export": "npm run build && next export",
-    "postexport": "node helpers/postExport.js"
+    "postexport": "node helpers/postExport.js",
+    "export": "npm run build && next export && npm run postexport"
   },
   "husky": {
     "hooks": {

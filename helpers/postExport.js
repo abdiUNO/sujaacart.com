@@ -1,8 +1,9 @@
 const fs = require('fs');
+const path = require('path');
 
 const blacklist = ['_app', 'posts/[slug]'];
 
-getPathsObject = _dir => {
+getPathsObject = (_dir, keepExt) => {
   const fileObj = {};
 
   const walkSync = dir => {
@@ -20,13 +21,16 @@ getPathsObject = _dir => {
         // Construct this file's pathname excluding the "pages" folder & its extension
         const cleanFileName = filePath
           .substr(0, filePath.lastIndexOf('.'))
-          .replace('pages/', '');
+          .replace('pages/', '')
+          .replace('public/', '');
 
         // Add this file to `fileObj`
         if (!blacklist.includes(cleanFileName)) {
           fileObj[`/${cleanFileName}`] = {
             page: `/${cleanFileName}`,
-            lastModified: fileStat.mtime
+            lastModified: fileStat.mtime,
+            file: file.substr(0, file.lastIndexOf('.')),
+            extension: path.extname(file)
           };
         }
       }
@@ -52,7 +56,7 @@ function formatDate(date) {
 }
 
 const pathsObj = getPathsObject('pages/');
-const imageObj = getPathsObject('public/img/');
+const imageObj = getPathsObject('public/img/', true);
 
 const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
@@ -62,19 +66,21 @@ ${Object.keys(pathsObj)
     path =>
       ` 
     <url>
-      <loc>https://sujaacart.com/${path}</loc>
+      <loc>https://sujaacart.com${path}</loc>
       <lastmod>${formatDate(new Date(pathsObj[path].lastModified))}</lastmod>
     </url>`
   )
   .join('')}
-${Object.keys(imageObj).map(
-  path => `
+${Object.keys(imageObj)
+  .map(
+    path => `
     <image:image>
-        <image:loc>https://sujaacart.com/img${path}</image:loc>
-        <image:title>Art by Sujaac Art | ${path.page}</image:title>
+        <image:loc>https://sujaacart.com${path}${imageObj[path].extension}</image:loc>
+        <image:title>Art by Sujaac Art | ${imageObj[path].file}</image:title>
     </image:image>
 `
-)}  
+  )
+  .join('')}  
 </urlset>`;
 
 fs.writeFileSync('out/sitemap.xml', sitemapXml);
