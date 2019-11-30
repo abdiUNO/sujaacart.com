@@ -13,6 +13,26 @@ module.exports = withPlugins([[withCSS, withPurgeCss], [withOffline]], {
     });
     return configuration;
   },
+  workboxOpts: {
+    runtimeCaching: [
+      {
+        urlPattern: /^https:\/\/fonts\.(googleapis|gstatic)\.com/,
+        handler: 'cacheFirst',
+        options: {
+          cacheName: 'google-fonts-stylesheets',
+          expiration: { maxEntries: 100, maxAgeSeconds: 60 * 60 * 24 * 30 },
+          cacheableResponse: {
+            statuses: [0, 200]
+          }
+        }
+      },
+      { urlPattern: /^https?.*/, handler: 'networkFirst' }
+    ],
+    // Not sure adding display swap is actually working (i see fetch for plain still after)
+    // importScripts: ['static/js/service-worker-extras.js'],
+    skipWaiting: true,
+    clientsClaim: true
+  },
   exportPathMap: async function() {
     const routes = {
       '/': { page: '/' },

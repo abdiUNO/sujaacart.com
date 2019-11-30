@@ -2,6 +2,23 @@
 import Document, { Head, Main, NextScript } from 'next/document';
 // We wrap our scripts below in Fragment to avoid unnecessary mark up
 import React from 'react';
+
+const dnsPrefetch = [
+  '//fonts.googleapis.com',
+  'https://www.google-analytics.com',
+  'https://www.googletagmanager.com'
+];
+
+/*
+By initiating early "preconnects", the browser can set up the necessary sockets ahead of time and eliminate the costly DNS,
+TCP, and TLS roundtrips from the critical path of the actual request.
+ */
+const preConnect = [
+  'https://fonts.gstatic.com',
+  'https://www.google-analytics.com',
+  'https://www.googletagmanager.com'
+];
+
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx);
@@ -82,7 +99,23 @@ export default class MyDocument extends Document {
             sizes="16x16"
             href="/favicon-16x16.png"
           />
+          {dnsPrefetch.map(name => (
+            <link rel="dns-prefetch" href={name} key={name} />
+          ))}
+
+          <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
+
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+
           <link rel="manifest" href="/manifest.json" />
+
+          <meta name="MobileOptimized" content="320" />
+          <meta name="HandheldFriendly" content="True" />
+          {/* Removing user-scalable=no, maximum-scale due to accessibility notes in lighthouse */}
+          <meta
+            name="viewport"
+            content="initial-scale=1, width=device-width, height=device-height, minimal-ui"
+          />
           <meta name="msapplication-TileColor" content="#ffffff" />
           <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
 
@@ -109,6 +142,16 @@ export default class MyDocument extends Document {
             type="application/xml"
             content="https://sujaacart.com/sitemap.xml"
           />
+
+          {preConnect.map(name => (
+            <link
+              href={name}
+              rel="preconnect"
+              crossOrigin="anonymous"
+              key={name}
+            />
+          ))}
+
           <meta name="theme-color" content="#3798dc" />
           <meta name="msapplication-navbutton-color" content="#3798dc" />
           <meta
