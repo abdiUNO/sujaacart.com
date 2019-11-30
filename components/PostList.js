@@ -9,7 +9,7 @@ const masonryOptions = {
 };
 
 const postVariants = {
-  initial: { scale: 0.95, y: 0, opacity: 0 },
+  initial: { scale: 0.95, y: 0, opacity: 0.75 },
   enter: {
     scale: 1,
     y: 0,
@@ -44,15 +44,15 @@ function PostList({ posts }) {
               <picture>
                 <source
                   media="(max-width: 640px)"
-                  srcSet={`${_comic.image}?nf_resize=fit&w=275`}
+                  srcSet={`${_comic.image}?nf_resize=fit&w=320`}
                 />
                 <source
                   media="(min-width: 641px)"
-                  srcSet={`${_comic.image}?nf_resize=fit&w=375`}
+                  srcSet={`${_comic.image}?nf_resize=fit&w=400`}
                 />
                 <img
                   className="img-fluid"
-                  src={`${_comic.image}?nf_resize=fit&w=375`}
+                  src={`${_comic.image}?nf_resize=fit&w=400`}
                   alt={`Post ${_comic.date}`}
                 />
               </picture>
@@ -110,7 +110,7 @@ function PostList({ posts }) {
               src="/img/profile.png?nf_resize=fit&w=375"
               alt=""
               className="img-fluid"
-              loading="auto"
+              loading="eager"
             />
           </div>
         </div>
