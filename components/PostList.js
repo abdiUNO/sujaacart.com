@@ -41,17 +41,21 @@ function PostList({ posts }) {
           }}>
           <Link href={`/posts/${_comic.id}`} prefetch={false}>
             <a className="text-decoration-none">
-              <img
-                className="img-fluid"
-                sizes="(min-width: 1366px) 916px,
-                        (min-width: 1536px) 1030px,
-                        100vw"
-                srcSet={`${_comic.image}?nf_resize=fit&w=300 640w,
-                     ${_comic.image}?nf_resize=fit&w=600 916w,
-                     ${_comic.image}?nf_resize=fit&w=730 1030w`}
-                src={`${_comic.image}?nf_resize=fit&w=300`}
-                alt={`Post ${_comic.date}`}
-              />
+              <picture>
+                <source
+                  srcSet={`${_comic.image}?nf_resize=fit&w=700`}
+                  media="(min-width: 1200px)"
+                />
+                <source
+                  srcSet={`${_comic.image}?nf_resize=fit&w=600`}
+                  media="(min-width: 740px)"
+                />
+                <img
+                  className="img-fluid"
+                  src={`${_comic.image}?nf_resize=fit&w=500`}
+                  alt={`Post ${_comic.date}`}
+                />
+              </picture>
             </a>
           </Link>
           <p className="img-date">November 19th, 2019</p>
