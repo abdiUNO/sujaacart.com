@@ -29,7 +29,7 @@ function PostList({ posts }) {
     <div
       key={_comic.id}
       id={_comic.id}
-      className="mb-3 pics animation col-md-4 col-sm-6 col-xs-12">
+      className="mb-3 pics animation col-md-4 col-sm-6 col-xs-12 justify-content-center">
       <motion.div variants={postVariants}>
         <motion.div
           whileHover="hover"
