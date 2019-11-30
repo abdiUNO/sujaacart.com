@@ -43,7 +43,7 @@ function PostList({ posts }) {
             <a className="text-decoration-none">
               <picture>
                 <source
-                  srcSet={require(`../public${_comic.image}?webp&resize&sizes[]=300&sizes[]=500`)}
+                  srcSet={require(`../public${_comic.image}?webp`)}
                   type="image/webp"
                 />
                 <source
