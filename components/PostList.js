@@ -116,9 +116,11 @@ function PostList({ posts }) {
         </div>
       </motion.div>
       <Masonry
+        disableImagesLoaded={true}
         className={'gallery'} // default ''
         options={masonryOptions} // default {}
-        enableResizableChildren={true}>
+        enableResizableChildren={true}
+        updateOnEachImageLoad={false}>
         {childElements}
       </Masonry>
       <style jsx>{`
