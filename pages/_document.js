@@ -122,6 +122,7 @@ export default class MyDocument extends Document {
           <meta name="theme-color" content="#ffffff" />
           <meta property="og:type" content="website" />
           <meta property="og:title" content="Sujaac Arts" />
+          <meta property="fb:app_id" content="106123752757013" />
           <meta
             property="og:description"
             content="Sujaac Arts web comics illustration"
