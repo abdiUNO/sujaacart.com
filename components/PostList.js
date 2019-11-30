@@ -43,16 +43,16 @@ function PostList({ posts }) {
             <a className="text-decoration-none">
               <picture>
                 <source
-                  media="(max-width: 640px)"
-                  srcSet={`${_comic.image}?nf_resize=fit&w=275`}
+                  srcSet={require(`../static${_comic.image}?webp&resize&sizes[]=300&sizes[]=500`)}
+                  type="image/webp"
                 />
                 <source
-                  media="(min-width: 641px)"
-                  srcSet={`${_comic.image}?nf_resize=fit&w=375`}
+                  srcSet={require(`../static${_comic.image}?resize&sizes[]=300&sizes[]=500`)}
                 />
+
                 <img
                   className="img-fluid"
-                  src={`${_comic.image}?nf_resize=fit&w=375`}
+                  src={require(`../static${_comic.image}`)}
                   alt={`Post ${_comic.date}`}
                 />
               </picture>
