@@ -102,7 +102,7 @@ export default function Post(props) {
         <meta name="title" content="Comic by Sujaac Arts" />
         <meta
           property="description"
-          content={`Comic by Sujaac Arts | ${reformatDate(post.date)}`}
+          content={`Post ${reformatDate(post.date)} by Sujaac Arts`}
         />
       </Head>
       <motion.div

@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const matter = require('gray-matter');
 
-const blacklist = ['_app', 'posts/[slug]'];
+const blacklist = ['_app', 'index', 'posts/[slug]'];
 
 getPathsObject = (_dir, keepExt) => {
   const fileObj = {};
@@ -84,12 +84,18 @@ const imageObj = parseMarkdown();
 const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+        
+    <url>
+      <loc>https://www.sujaacart.com</loc>
+      <lastmod>2019-11-29</lastmod>
+    </url>
+
 ${Object.keys(pathsObj)
   .map(
     path =>
       `
     <url>
-      <loc>https://sujaacart.com${path}</loc>
+      <loc>https://www.sujaacart.com${path}</loc>
       <lastmod>${formatDate(new Date(pathsObj[path].lastModified))}</lastmod>
     </url>`
   )
@@ -98,9 +104,11 @@ ${Object.keys(imageObj)
   .map(
     path => `
     <url>
-      <loc>https://sujaacart.com${path}</loc>
+      <loc>https://www.sujaacart.com${path}</loc>
       <image:image>
-          <image:loc>https://sujaacart.com${imageObj[path].image}</image:loc>
+          <image:loc>https://www.sujaacart.com${
+            imageObj[path].image
+          }</image:loc>
           <image:title>Art by Sujaac Art | posted on ${reformatDate(
             imageObj[path].date
           )}</image:title>
