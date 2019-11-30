@@ -1,7 +1,6 @@
 import Typography from 'typography';
 import theme from 'typography-theme-sutro';
 import CodePlugin from 'typography-plugin-code';
-import gray from 'gray-percentage';
 
 theme.plugins = [new CodePlugin()];
 

@@ -7,13 +7,17 @@ import '@fortawesome/fontawesome-svg-core/styles.css'; // Import the CSS
 config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS automatically since it's being imported above
 
 import { AnimatePresence } from 'framer-motion';
-import Router from 'next/router';
 import Layout from '../components/Layout';
 import Head from 'next/head';
 import { TypographyStyle } from 'react-typography';
 import typography from '../utils/typography';
 
 class MyApp extends App {
+  constructor(props) {
+    super(props);
+    console.log('SUPER');
+  }
+
   render() {
     const { Component, pageProps, router } = this.props;
     return (

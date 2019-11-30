@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Head from 'next/head';
 
 let cache = {};
@@ -154,7 +154,7 @@ export default function Post(props) {
         </motion.div>
 
         <motion.div variants={backVariants}>
-          <Link href={`/`} passHref={true}>
+          <Link href={`/#${post.id}`} passHref={true} scroll>
             <a className="nav-back">Back to list</a>
           </Link>
         </motion.div>

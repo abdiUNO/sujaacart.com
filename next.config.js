@@ -1,6 +1,5 @@
 // next.config.js
 const glob = require('fast-glob');
-const posts = './content/posts';
 const withCSS = require('@zeit/next-css');
 
 module.exports = withCSS({
