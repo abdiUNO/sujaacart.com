@@ -3,11 +3,6 @@ import './comic.css';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Masonry from 'react-masonry-component';
-import {
-  LazyLoadImage,
-  trackWindowScroll
-} from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const masonryOptions = {
   transitionDuration: 0,
@@ -44,7 +39,7 @@ const placeholder = (
   </div>
 );
 
-const Gallery = ({ posts, scrollPosition }) => (
+const Gallery = ({ posts }) => (
   <div>
     {posts.map((_comic, index) => (
       <div
@@ -59,16 +54,22 @@ const Gallery = ({ posts, scrollPosition }) => (
                 variants={{
                   hover: { scale: 0.96, bounceDamping: 8 }
                 }}>
-                <LazyLoadImage
-                  className="img-fluid"
-                  alt={`Post ${_comic.date}`}
-                  scrollPosition={scrollPosition}
-                  effect="blur"
-                  width={'100%'}
-                  placeholder={placeholder}
-                  height={'auto'}
-                  src={`${_comic.image}?nf_resize=fit&w=400`} // use normal <img> attributes as props
-                />
+                <picture>
+                  <source
+                    media="(max-width: 640px)"
+                    srcSet={`${_comic.image}?nf_resize=fit&w=300`}
+                  />
+                  <source
+                    media="(max-width: 641px)"
+                    srcSet={`${_comic.image}?nf_resize=fit&w=400`}
+                  />
+                  <img
+                    className="img-fluid"
+                    src={`${_comic.image}?nf_resize=fit&w=400`}
+                    alt={`Post ${_comic.date}`}
+                    loading="auto"
+                  />
+                </picture>
                 <p className="img-date">November 19th, 2019</p>
               </motion.div>
             </a>
@@ -78,8 +79,6 @@ const Gallery = ({ posts, scrollPosition }) => (
     ))}
   </div>
 );
-
-const GalleryWithScroll = trackWindowScroll(Gallery);
 
 function PostList({ posts, scrollPosition }) {
   return (
@@ -101,7 +100,7 @@ function PostList({ posts, scrollPosition }) {
           className={'gallery'} // default ''
           options={masonryOptions} // default {}
           enableResizableChildren={true}>
-          <GalleryWithScroll posts={posts} />
+          <Gallery posts={posts} />
         </Masonry>
       </motion.div>
       <style jsx>{`

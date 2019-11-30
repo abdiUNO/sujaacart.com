@@ -12,10 +12,6 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
-          <link
-            href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Montserrat:400,500&display=swap"
-            rel="stylesheet"
-          />
           <link rel="shortcut icon" href="/favicon.ico" />
           <link
             rel="apple-touch-icon"

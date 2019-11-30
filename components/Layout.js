@@ -9,6 +9,7 @@ const PostList = ({ children }) => (
     <div className="content-wrapper">{children}</div>
 
     <style jsx global>{`
+      @import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Montserrat:400,500&display=swap');
       *,
       *::before,
       *::after {
