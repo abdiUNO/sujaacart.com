@@ -10,8 +10,6 @@ const masonryOptions = {
   itemSelector: '.pics'
 };
 
-const imagesLoadedOptions = { background: '.my-bg-image-el' };
-
 const postVariants = {
   initial: { scale: 0.95, y: -15, opacity: 0 },
   enter: {
@@ -27,17 +25,6 @@ const postVariants = {
     transition: { duration: 0.2, ease: [0.48, 0.15, 0.25, 0.96] }
   }
 };
-
-const placeholder = (
-  <div className="photo-placeholder">
-    <style jsx>{`
-      .photo-placeholder {
-        height: 300px;
-        width: 100vw;
-      }
-    `}</style>
-  </div>
-);
 
 const Gallery = ({ posts }) => (
   <div>
@@ -60,7 +47,7 @@ const Gallery = ({ posts }) => (
                     srcSet={`${_comic.image}?nf_resize=fit&w=300`}
                   />
                   <source
-                    media="(max-width: 641px)"
+                    media="(min-width: 641px)"
                     srcSet={`${_comic.image}?nf_resize=fit&w=400`}
                   />
                   <img
