@@ -64,7 +64,7 @@ function PostList({ posts }) {
               </picture>
             </a>
           </Link>
-          <p className="img-date">${reformatDate(_comic.date)}</p>
+          <p className="img-date">{reformatDate(_comic.date)}</p>
         </motion.div>
       </motion.div>
       <style jsx>
