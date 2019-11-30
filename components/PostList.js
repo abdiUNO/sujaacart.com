@@ -43,16 +43,16 @@ function PostList({ posts }) {
             <a className="text-decoration-none">
               <picture>
                 <source
-                  srcSet={require(`../static${_comic.image}?webp&resize&sizes[]=300&sizes[]=500`)}
-                  type="image/webp"
+                  media="(max-width: 640px)"
+                  srcSet={`${_comic.image}?nf_resize=fit&w=275`}
                 />
                 <source
-                  srcSet={require(`../static${_comic.image}?resize&sizes[]=300&sizes[]=500`)}
+                  media="(min-width: 641px)"
+                  srcSet={`${_comic.image}?nf_resize=fit&w=375`}
                 />
-
                 <img
                   className="img-fluid"
-                  src={require(`../public${_comic.image}`)}
+                  src={`${_comic.image}?nf_resize=fit&w=375`}
                   alt={`Post ${_comic.date}`}
                 />
               </picture>
@@ -118,8 +118,7 @@ function PostList({ posts }) {
       <Masonry
         className={'gallery'} // default ''
         options={masonryOptions} // default {}
-        enableResizableChildren={true}
-        updateOnEachImageLoad={false}>
+        enableResizableChildren={true}>
         {childElements}
       </Masonry>
       <style jsx>{`
