@@ -25,7 +25,7 @@ const postVariants = {
 };
 
 function PostList({ posts }) {
-  const childElements = posts.map((_comic, index) => (
+  const childElements = posts.map(_comic => (
     <div
       key={_comic.id}
       id={_comic.id}
@@ -34,7 +34,10 @@ function PostList({ posts }) {
         <motion.div
           whileHover="hover"
           variants={{
-            hover: { scale: 0.96, bounceDamping: 8 }
+            hover: {
+              scale: 0.96,
+              transition: { duration: 0.5, ease: [0.48, 0.15, 0.25, 0.96] }
+            }
           }}>
           <Link href={`/posts/${_comic.id}`}>
             <a className="text-decoration-none">
@@ -80,7 +83,6 @@ function PostList({ posts }) {
             -o-transition: box-shadow 1s;
             transition: box-shadow 1s;
             transition: box-shadow 1s, -webkit-box-shadow 1s;
-            cursor: zoom-in;
           }
           .animation {
             -webkit-transform: scale(1);
