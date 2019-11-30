@@ -21,6 +21,7 @@
   -o-transition: box-shadow 1s;
   transition: box-shadow 1s;
   transition: box-shadow 1s, -webkit-box-shadow 1s;
+  cursor: zoom-in;
 }
 
 .gallery .pics .img-date {
@@ -42,4 +43,21 @@
     padding-left: 1.1rem;
     padding-right: 1.1rem;
   }
+}
+
+.gallery .pics img::before {
+  background: rgba(140, 140, 140, 0.8);
+  bottom: 0;
+  content: '';
+  display: block;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: opacity 0.3s;
+}
+
+.gallery .pics img:hover::before {
+  opacity: 1;
 }
