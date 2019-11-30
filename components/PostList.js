@@ -25,6 +25,11 @@ const postVariants = {
   }
 };
 
+function reformatDate(fullDate) {
+  const date = new Date(fullDate);
+  return date.toDateString().slice(4);
+}
+
 function PostList({ posts }) {
   const childElements = posts.map(_comic => (
     <div
@@ -54,12 +59,12 @@ function PostList({ posts }) {
                 <img
                   className="img-fluid"
                   src={`${_comic.image}?nf_resize=fit&w=500`}
-                  alt={`Post ${_comic.date}`}
+                  alt={`Post ${reformatDate(_comic.date)}`}
                 />
               </picture>
             </a>
           </Link>
-          <p className="img-date">November 19th, 2019</p>
+          <p className="img-date">${reformatDate(_comic.date)}</p>
         </motion.div>
       </motion.div>
       <style jsx>
