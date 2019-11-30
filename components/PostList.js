@@ -43,16 +43,16 @@ function PostList({ posts }) {
             <a className="text-decoration-none">
               <picture>
                 <source
-                  srcSet={require(`../static${_comic.image}?webp&resize&sizes[]=300&sizes[]=500`)}
+                  srcSet={require(`../public${_comic.image}?webp&resize&sizes[]=300&sizes[]=500`)}
                   type="image/webp"
                 />
                 <source
-                  srcSet={require(`../static${_comic.image}?resize&sizes[]=300&sizes[]=500`)}
+                  srcSet={require(`../public${_comic.image}?resize&sizes[]=300&sizes[]=500`)}
                 />
 
                 <img
                   className="img-fluid"
-                  src={require(`../static${_comic.image}`)}
+                  src={require(`../public${_comic.image}`)}
                   alt={`Post ${_comic.date}`}
                 />
               </picture>
