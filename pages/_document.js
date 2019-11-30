@@ -126,10 +126,7 @@ export default class MyDocument extends Document {
             property="og:description"
             content="Sujaac Arts web comics illustration"
           />
-          <meta
-            property="og:image"
-            content="https://sujaacart.com/img/website_preview.png"
-          />
+
           <meta
             name="description"
             content="Sujaac Arts is Somalia political cartoonist, browse and share posts by sujaac arts"
@@ -167,9 +164,13 @@ export default class MyDocument extends Document {
             itemProp="image"
             content="https://sujaacart.com/img/website_preview.png"
           />
-          <meta property="og:type" content="blog" />
+          <meta type="og:type" property="og:type" content="blog" />
           <meta property="og:title" content="Sujaac Arts" />
-          <meta property="og:url" content="https://sujaacart.com" />
+          <meta
+            key="og:url"
+            property="og:url"
+            content="https://sujaacart.com"
+          />
           <meta
             property="og:site_name"
             content="https://www.facebook.com/pages/category/Personal-Blog/Sujaac-Arts-119424006122869/"
@@ -198,6 +199,12 @@ export default class MyDocument extends Document {
           />
         </Head>
         <body>
+          <div id="fb-root"></div>
+          <script
+            async
+            defer
+            crossOrigin="anonymous"
+            src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v5.0&appId=106123752757013"></script>
           <Main />
           <NextScript />
         </body>

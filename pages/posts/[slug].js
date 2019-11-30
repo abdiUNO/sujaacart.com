@@ -63,13 +63,27 @@ function reformatDate(fullDate) {
 
 const PostInfo = ({ post }) => {
   return (
-    <div className="post-info">
-      <time>{reformatDate(post.date)}</time>
+    <div className="post-info row nav-controls justify-content-around">
+      <div className="justify-content-start col">
+        <time>{reformatDate(post.date)}</time>
+      </div>
+      <div className="col">
+        <div
+          className="fb-like"
+          data-href={`https://sujaacart.com/posts/${post.id}`}
+          data-width=""
+          data-layout="button"
+          data-action="like"
+          data-size="large"
+          data-show-faces="false"
+          data-share="true"
+        />
+      </div>
       <style jsx>{`
         .post-info {
-          font-size: 16px;
+          font-size: 18px;
           color: #999;
-          margin: 10px auto;
+          margin: 20px auto;
         }
         .author {
           color: #555;
@@ -99,10 +113,30 @@ export default function Post(props) {
     <div className="container post" style={{ height: '100vh' }}>
       <Head>
         <title>{`Post | ${reformatDate(post.date)} by Sujaac Arts`}</title>
+
         <meta name="title" content="Comic by Sujaac Arts" />
         <meta
+          key="description"
           property="description"
           content={`Post ${reformatDate(post.date)} by Sujaac Arts`}
+        />
+        <meta key="og:type" property="og:type" content="article" />
+
+        <meta
+          key="og:url"
+          property="og:url"
+          content={`https://sujaacart.com/posts/${post.id}`}
+        />
+
+        <meta
+          property="og:description"
+          key="og:description"
+          content={`Post ${reformatDate(post.date)} by Sujaac Arts`}
+        />
+        <meta
+          key="og:image"
+          property="og:image"
+          content={`https://sujaacart.com${post.image}?nf_resize=fit&w=1200`}
         />
       </Head>
       <motion.div
@@ -153,13 +187,6 @@ export default function Post(props) {
           <p>{post.text}</p>
         </motion.div>
 
-        <div id="fb-root">
-          <div
-            className="fb-share-button"
-            data-href={`https://sujaacart.com/posts/${post.id}`}
-            data-layout="button_count"></div>
-        </div>
-
         <motion.div variants={backVariants}>
           <Link href={`/#${post.id}`} passHref={true} scroll>
             <a className="nav-back">Back to list</a>
@@ -205,12 +232,12 @@ export default function Post(props) {
         dangerouslySetInnerHTML={{
           __html: `
             (function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+            fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'facebook-jssdk'));
         `
         }}
       />
