@@ -78,7 +78,11 @@ function PostList({ posts }) {
         <motion.div variants={postVariants}>
           <div className="row embed-responsive">
             <div className="img-container mx-auto">
-              <img src="/img/profile.png" alt="" className="img-fluid" />
+              <img
+                src="/img/profile.png?nf_resize=fit&w=400"
+                alt=""
+                className="img-fluid"
+              />
             </div>
           </div>
         </motion.div>
