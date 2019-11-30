@@ -97,10 +97,21 @@ function PostList({ posts }) {
       <style jsx>{`
         .img-container {
           max-width: 35%;
+          display: -webkit-box;
+          display: -ms-flexbox;
           display: flex;
+          -webkit-box-flex: 1;
+          -ms-flex: 1;
           flex: 1;
+          -webkit-box-orient: horizontal;
+          -webkit-box-direction: normal;
+          -ms-flex-direction: row;
           flex-direction: row;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
           align-items: center;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
           justify-content: center;
           margin-bottom: 60px;
         }

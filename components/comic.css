@@ -4,17 +4,23 @@
 }
 .gallery .pics {
   -webkit-transition: all 350ms ease;
+  -o-transition: all 350ms ease;
   transition: all 350ms ease;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
 .gallery .pics img {
+  -webkit-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
   border-radius: 3px;
+  -webkit-transition: -webkit-box-shadow 1s;
+  transition: -webkit-box-shadow 1s;
+  -o-transition: box-shadow 1s;
   transition: box-shadow 1s;
+  transition: box-shadow 1s, -webkit-box-shadow 1s;
 }
 
 .gallery .pics .img-date {

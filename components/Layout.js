@@ -23,8 +23,7 @@ const PostList = ({ children }) => (
         line-height: 1.7;
         font-weight: 400;
         background: #fff;
-        font-family: Montserrat -apple-system, BlinkMacSystemFont, 'Segoe UI',
-          'Fira Sans', Avenir, 'Helvetica Neue', 'Lucida Grande', sans-serif;
+        font-family: 'Montserrat', sans-serif;
         text-rendering: optimizeLegibility;
       }
 

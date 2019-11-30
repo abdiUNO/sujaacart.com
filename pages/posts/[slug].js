@@ -175,7 +175,11 @@ export default function Post(props) {
         }
 
         .nav-controls {
+          display: -webkit-box;
+          display: -ms-flexbox;
           display: flex;
+          -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
           justify-content: space-between;
           font-size: 22px;
           color: #999;

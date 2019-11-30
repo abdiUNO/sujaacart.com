@@ -8,21 +8,10 @@ theme.plugins = [new CodePlugin()];
 const typography = new Typography({
   ...theme,
   headerFontFamily: ['Gloria Hallelujah', 'cursive'],
-  bodyFontFamily: ['Open Sans', 'sans-serif'],
-  overrideStyles: ({ adjustFontSizeTo, rhythm }, options, styles) => ({
+  bodyFontFamily: ['Montserrat', 'sans-serif'],
+  overrideStyles: () => ({
     h1: {
       fontFamily: ['Gloria Hallelujah', 'cursive'].join(',')
-    },
-    blockquote: {
-      ...adjustFontSizeTo('19px'),
-      color: gray(41),
-      fontStyle: 'italic',
-      paddingLeft: rhythm(13 / 16),
-      marginLeft: rhythm(-1),
-      borderLeft: `${rhythm(3 / 16)} solid ${gray(10)}`
-    },
-    'blockquote > :last-child': {
-      marginBottom: 0
     }
   })
 });

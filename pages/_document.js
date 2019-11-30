@@ -13,9 +13,8 @@ export default class MyDocument extends Document {
       <html>
         <Head>
           <link
-            href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Open+Sans:400,700&display=swap"
+            href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Montserrat:400,500&display=swap"
             rel="stylesheet"
-            type="text/css"
           />
           <link rel="shortcut icon" href="/favicon.ico" />
           <link
