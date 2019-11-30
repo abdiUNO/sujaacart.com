@@ -4,7 +4,7 @@ import Head from 'next/head';
 
 const importBlogPosts = async () => {
   const posts = (context => {
-    const keys = context.keys();
+    const keys = context.keys().reverse();
     const values = keys.map(context);
     return keys.map((key, index) => {
       // Create slug from filename
@@ -32,10 +32,23 @@ const Index = props => {
   return (
     <div className="container">
       <Head>
-        <title>Home</title>
+        <title>Sujaac Arts</title>
+
+        <meta name="title" content="Sujaac Arts" />
+        <meta
+          property="description"
+          content="Sujaac Arts is Somalia political cartoonist, browse and share posts by sujaac arts"
+        />
       </Head>
 
       <PostList posts={props.posts} />
+
+      <style jsx>
+        {`
+          padding-left: 0px;
+          padding-right: 0px;
+        `}
+      </style>
     </div>
   );
 };

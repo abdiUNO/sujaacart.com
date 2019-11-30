@@ -13,7 +13,9 @@ module.exports = withCSS({
   },
   exportPathMap: async function() {
     const routes = {
-      '/': { page: '/' }
+      '/': { page: '/' },
+      '/posts': { page: '/' },
+      '/about': { page: '/about' }
     };
     //get all .md files in the posts dir
     const blogs = glob.sync('content/posts/**/*.md');
@@ -28,7 +30,7 @@ module.exports = withCSS({
     );
 
     //add each blog to the routes obj
-    blogSlugs.map((blog, index) => {
+    blogSlugs.reverse().map((blog, index) => {
       routes[`/posts/${blog}`] = {
         page: '/posts/[slug]',
         query: {

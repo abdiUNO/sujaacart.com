@@ -66,10 +66,6 @@ const PostList = ({ children }) => (
         padding: 40px 0;
         background-color: #ffffff;
       }
-
-      .container {
-        overflow: hidden;
-      }
     `}</style>
   </div>
 );

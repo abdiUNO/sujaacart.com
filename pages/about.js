@@ -7,7 +7,12 @@ class About extends Component {
     return (
       <motion.div initial="visible" animate={'enter'} exit="exit">
         <Head>
-          <title>Home</title>
+          <title>About - Sujaac Arts</title>
+          <meta name="title" content="About - Sujaac Arts" />
+          <meta
+            property="description"
+            content="About on Sujaac Arts web comics illustration"
+          />
         </Head>
         <div className="container">
           <div className="img-container">

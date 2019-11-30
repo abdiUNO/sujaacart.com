@@ -98,7 +98,12 @@ export default function Post(props) {
   return (
     <div className="container post" style={{ height: '100vh' }}>
       <Head>
-        <title>{`Post | ${reformatDate(post.date)}`}</title>
+        <title>{`Post | ${reformatDate(post.date)} by Sujaac Arts`}</title>
+        <meta name="title" content="Comic by Sujaac Arts" />
+        <meta
+          property="description"
+          content={`Comic by Sujaac Arts | ${reformatDate(post.date)}`}
+        />
       </Head>
       <motion.div
         initial="exit"
@@ -138,7 +143,8 @@ export default function Post(props) {
 
         <motion.img
           variants={imageVariants}
-          src={`${post.image}?nf_resize=fit&w=1600`}
+          src={`${post.image}`}
+          alt={`Post ${post.date}`}
         />
 
         <motion.div variants={textVariants}>
