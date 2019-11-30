@@ -13,11 +13,6 @@ import { TypographyStyle } from 'react-typography';
 import typography from '../utils/typography';
 
 class MyApp extends App {
-  constructor(props) {
-    super(props);
-    console.log('SUPER');
-  }
-
   render() {
     const { Component, pageProps, router } = this.props;
     return (
