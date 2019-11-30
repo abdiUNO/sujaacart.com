@@ -43,9 +43,14 @@ function PostList({ posts }) {
             <a className="text-decoration-none">
               <img
                 className="img-fluid"
-                src={`${_comic.image}?nf_resize=fit&w=320`}
-                srcSet={`${_comic.image}?nf_resize=fit&w=320 320w, ${_comic.image}?nf_resize=fit&w=500 800w, ${_comic.image}?nf_resize=fit&w=600 1200w`}
-                alt="Image description"
+                sizes="(min-width: 1200px) 730w,
+                      (max-width: 1199px) 610w,
+                      (max-width: 380px) 350w"
+                srcSet={`${_comic.image}?nf_resize=fit&w=730 730w,
+                     ${_comic.image}?nf_resize=fit&w=600 610w,
+                     ${_comic.image}?nf_resize=fit&w=300 350w`}
+                src={`${_comic.image}?nf_resize=fit&w=300`}
+                alt={`Post ${_comic.date}`}
               />
             </a>
           </Link>
