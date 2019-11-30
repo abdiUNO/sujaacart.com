@@ -39,7 +39,7 @@ function PostList({ posts }) {
               transition: { duration: 0.5, ease: [0.48, 0.15, 0.25, 0.96] }
             }
           }}>
-          <Link href={`/posts/${_comic.id}`}>
+          <Link href={`/posts/${_comic.id}`} prefetch={false}>
             <a className="text-decoration-none">
               <picture>
                 <source

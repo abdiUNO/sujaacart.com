@@ -3,8 +3,9 @@ const glob = require('fast-glob');
 const withCSS = require('@zeit/next-css');
 const withPlugins = require('next-compose-plugins');
 const withOffline = require('next-offline');
+const withPurgeCss = require('next-purgecss');
 
-module.exports = withPlugins([[withOffline], [withCSS]], {
+module.exports = withPlugins([[withCSS, withPurgeCss], [withOffline]], {
   webpack: configuration => {
     configuration.module.rules.push({
       test: /\.md$/,
