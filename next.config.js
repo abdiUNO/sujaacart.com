@@ -1,8 +1,10 @@
 // next.config.js
 const glob = require('fast-glob');
 const withCSS = require('@zeit/next-css');
+const withPlugins = require('next-compose-plugins');
+const withOffline = require('next-offline');
 
-module.exports = withCSS({
+module.exports = withPlugins([[withOffline], [withCSS]], {
   webpack: configuration => {
     configuration.module.rules.push({
       test: /\.md$/,
