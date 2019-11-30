@@ -55,9 +55,7 @@ function PostList({ posts }) {
                   id={_comic.id}
                   className="mb-3 pics animation all 2 mx-3 py-2">
                   <motion.div variants={postVariants}>
-                    <Link
-                      passHref={true}
-                      href={{ pathname: `/posts/${_comic.id}` }}>
+                    <Link href={`/posts/${_comic.id}`}>
                       <a className="text-decoration-none">
                         <motion.div
                           whileHover="hover"

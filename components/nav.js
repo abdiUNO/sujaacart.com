@@ -14,6 +14,7 @@ import Layout from './Layout';
 function Wrapper(props) {
   return (
     <Headroom
+      pinStart={200}
       calcHeightOnResize={true}
       style={{
         background: 'rgb(57, 111, 176)',

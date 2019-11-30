@@ -131,7 +131,7 @@
 
 @media (min-width: 768px) {
   .headroom-wrapper {
-    height: 375px !important;
+    height: 350px !important;
   }
 
   .headroom--scrolled .wrapper {

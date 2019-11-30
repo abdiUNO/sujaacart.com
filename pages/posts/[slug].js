@@ -28,6 +28,14 @@ const textVariants = {
   }
 };
 
+const buttonVariants = {
+  exit: { opacity: 0, transition: { duration: 0.5, ease: easing } },
+  enter: {
+    opacity: 1,
+    transition: { delay: 0.1, duration: 0.5, ease: easing }
+  }
+};
+
 const backVariants = {
   exit: {
     x: 100,
@@ -41,7 +49,7 @@ const backVariants = {
     x: 0,
     opacity: 1,
     transition: {
-      delay: 0.5,
+      delay: 0.3,
       duration: 0.5,
       ease: easing
     }
@@ -97,8 +105,8 @@ export default function Post(props) {
         animate="enter"
         positionTransition={spring}
         exit="exit">
-        <motion.div variants={textVariants}>
-          <div className="row nav-controls">
+        <motion.div variants={buttonVariants}>
+          <div className="row nav-controls justify-content-around">
             {props.post.prev ? (
               <Link
                 passHref={true}
@@ -128,7 +136,10 @@ export default function Post(props) {
           </div>
         </motion.div>
 
-        <motion.img variants={imageVariants} src={`${post.image}`} />
+        <motion.img
+          variants={imageVariants}
+          src={`${post.image}?nf_resize=fit&w=1600`}
+        />
 
         <motion.div variants={textVariants}>
           <PostInfo post={post} />
@@ -161,7 +172,8 @@ export default function Post(props) {
           justify-content: space-between;
           font-size: 22px;
           color: #999;
-          margin: 10px 10px 30px 10px;
+          margin-top: 10px;
+          margin-bottom: 30px;
           line-height: 2.2em;
         }
         .nav-controls a {
@@ -176,11 +188,11 @@ export default function Post(props) {
 }
 
 Post.getInitialProps = async function(ctx) {
-  const { slug, next, prev } = ctx.query;
-  const value = await import(`../../content/posts/${slug}.md`);
+  const { uuid, next, prev } = ctx.query;
+  const value = await import(`../../content/posts/${uuid}.md`);
   return {
     post: {
-      id: slug,
+      id: uuid,
       image: value.attributes.image,
       date: value.attributes.date,
       text: value.attributes.text,
