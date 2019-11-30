@@ -40,6 +40,10 @@ const Index = props => {
           key="description"
           content="Sujaac Arts is Somalia political cartoonist, browse and share posts by sujaac arts"
         />
+        <meta
+          property="og:image"
+          content="https://sujaacart.com/img/website_preview.png"
+        />
       </Head>
 
       <PostList posts={props.posts} />

@@ -134,7 +134,6 @@ export default function Post(props) {
           content={`Post ${reformatDate(post.date)} by Sujaac Arts`}
         />
         <meta
-          key="og:image"
           property="og:image"
           content={`https://sujaacart.com${post.image}?nf_resize=fit&w=1200`}
         />

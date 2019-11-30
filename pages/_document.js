@@ -177,10 +177,6 @@ export default class MyDocument extends Document {
             content="https://www.facebook.com/pages/category/Personal-Blog/Sujaac-Arts-119424006122869/"
           />
           <meta
-            property="og:image"
-            content="https://sujaacart.com/img/website_preview.png"
-          />
-          <meta
             property="og:description"
             content="Sujaac Arts is Somalia political cartoonist, browse and share posts by sujaac arts"
           />
