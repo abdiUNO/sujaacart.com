@@ -48,31 +48,34 @@ function PostList({ posts }) {
         </motion.div>
         <div className="row">
           <div className="gallery" id="gallery">
-            {posts.map((_comic, index) => (
-              <div
-                key={_comic.slug}
-                id={_comic.slug}
-                className="mb-3 pics animation all 2 mx-3 py-2">
-                <motion.div variants={postVariants}>
-                  <Link href={{ pathname: `/posts/${_comic.slug}` }}>
-                    <a className="text-decoration-none">
-                      <motion.div
-                        whileHover="hover"
-                        variants={{
-                          hover: { scale: 0.96, bounceDamping: 8 }
-                        }}>
-                        <img
-                          className="img-fluid"
-                          src={`${_comic.image}?nf_resize=fit&w=400`}
-                          alt="Card image cap"
-                        />
-                      </motion.div>
-                      <p className="img-date">November 19th, 2019</p>
-                    </a>
-                  </Link>
-                </motion.div>
-              </div>
-            ))}
+            {posts.length > 0 &&
+              posts.map(_comic => (
+                <div
+                  key={_comic.id}
+                  id={_comic.id}
+                  className="mb-3 pics animation all 2 mx-3 py-2">
+                  <motion.div variants={postVariants}>
+                    <Link
+                      passHref={true}
+                      href={{ pathname: `/posts/${_comic.id}` }}>
+                      <a className="text-decoration-none">
+                        <motion.div
+                          whileHover="hover"
+                          variants={{
+                            hover: { scale: 0.96, bounceDamping: 8 }
+                          }}>
+                          <img
+                            className="img-fluid"
+                            src={`${_comic.image}?nf_resize=fit&w=400`}
+                            alt="Card image cap"
+                          />
+                        </motion.div>
+                        <p className="img-date">November 19th, 2019</p>
+                      </a>
+                    </Link>
+                  </motion.div>
+                </div>
+              ))}
           </div>
         </div>
       </motion.div>

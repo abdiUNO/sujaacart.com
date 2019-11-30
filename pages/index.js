@@ -1,7 +1,6 @@
 import React from 'react';
 import PostList from '../components/PostList';
 import Head from 'next/head';
-import matter from 'gray-matter';
 
 const importBlogPosts = async () => {
   const posts = (context => {
@@ -16,12 +15,10 @@ const importBlogPosts = async () => {
         .join('.');
       const value = values[index];
       // Parse yaml metadata & markdownbody in document
-      const post = matter(value.default);
-
       return {
-        ...post.data,
-        id: post.data.uuid,
-        slug
+        id: slug,
+        image: value.attributes.image,
+        date: value.attributes.date
       };
     });
   })(require.context('../content/posts', true, /\.md$/));

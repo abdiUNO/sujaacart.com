@@ -1,23 +1,22 @@
 // next.config.js
-const glob = require('glob');
+const glob = require('fast-glob');
 const withCSS = require('@zeit/next-css');
 
 module.exports = withCSS({
-  webpack: function(config) {
-    config.module.rules.push({
+  webpack: configuration => {
+    configuration.module.rules.push({
       test: /\.md$/,
-      use: 'raw-loader'
+      use: 'frontmatter-markdown-loader'
     });
-    return config;
+    return configuration;
   },
-  exportPathMap: async function() {
+  exportPathMap: async function(defaultPathMap) {
     const routes = {
-      '/': { page: '/' }
+      ...defaultPathMap
     };
-    //get all .md files in the posts dir
-    const blogs = glob.sync('content/posts/**/*.md');
 
-    //remove path and extension to leave filename only
+    const blogs = await glob.sync('content/posts/**/*.md');
+
     const blogSlugs = blogs.map(file =>
       file
         .split('/')[2]
@@ -26,17 +25,18 @@ module.exports = withCSS({
         .trim()
     );
 
-    //add each blog to the routes obj
-    blogSlugs.map((blog, index) => {
-      routes[`/posts/${blog}`] = {
+    blogSlugs.forEach((blogName, index) => {
+      routes[`/posts/${blogName}`] = {
         page: '/posts/[slug]',
         query: {
-          slug: blog,
+          slug: blogName,
           next: blogSlugs[index + 1],
           prev: blogSlugs[index - 1]
         }
       };
     });
+
+    console.log(routes);
 
     return routes;
   }

@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { AnimatePresence, motion } from 'framer-motion';
 import Head from 'next/head';
-import matter from 'gray-matter';
 
 let cache = {};
 
@@ -177,13 +176,15 @@ export default function Post(props) {
 }
 
 Post.getInitialProps = async function(ctx) {
+  console.log(ctx);
   const { slug, next, prev } = ctx.query;
   const value = await import(`../../content/posts/${slug}.md`);
-  const { data } = matter(value.default);
   return {
     post: {
-      ...data,
-      id: data.uuid,
+      id: slug,
+      image: value.attributes.image,
+      date: value.attributes.date,
+      text: value.attributes.text,
       next,
       prev
     }
